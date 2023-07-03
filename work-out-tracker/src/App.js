@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WorkoutForm from './WorkoutForm';
 import WorkoutList from './WorkoutList';
 
+
 const App = () => {
   const [workouts, setWorkouts] = useState([]);
 
@@ -24,8 +25,15 @@ const App = () => {
     console.log('Clicked on date:', date);
   };
 
+  const backgroundColor = {
+    marginTop: 0,
+    backgroundColor: 'purple',
+    height: '100vh', 
+  };
+  
+
   return (
-    <div>
+    <div style={{...backgroundColor}}>
       <WorkoutForm addWorkout={addWorkout} />
       <WorkoutList workouts={workouts} handleDateClick={handleDateClick} />
     </div>

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import WorkoutForm from './WorkoutForm';
 import WorkoutList from './WorkoutList';
 
-
 const App = () => {
   const [workouts, setWorkouts] = useState([]);
 
   const addWorkout = (date, workout) => {
-    const existingWorkout = workouts.find((w) => w.date === date);
+    const existingWorkoutIndex = workouts.findIndex((w) => w.date === date);
 
-    if (existingWorkout) {
-      existingWorkout.workouts.push(workout);
-      setWorkouts([...workouts]);
+    if (existingWorkoutIndex !== -1) {
+      const updatedWorkouts = [...workouts];
+      updatedWorkouts[existingWorkoutIndex].workouts.push(workout);
+      setWorkouts(updatedWorkouts);
     } else {
       const newWorkout = {
         date,
@@ -26,14 +26,14 @@ const App = () => {
   };
 
   const backgroundColor = {
-    marginTop: 0,
-    backgroundColor: 'purple',
-    height: '100vh', 
+    marginTop: -16,
+    backgroundColor: '#2C3333',
+    height: '100vh',
+    color: '#CBE4DE',
   };
-  
 
   return (
-    <div style={{...backgroundColor}}>
+    <div style={backgroundColor}>
       <WorkoutForm addWorkout={addWorkout} />
       <WorkoutList workouts={workouts} handleDateClick={handleDateClick} />
     </div>

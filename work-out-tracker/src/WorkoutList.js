@@ -5,10 +5,11 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    color: '#2C3333', // Use the primary text color here
   };
 
   const dateCardStyles = {
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#2E4F4F', // Use the primary card background color here
     padding: '10px',
     marginBottom: '10px',
     cursor: 'pointer',
@@ -16,7 +17,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
   };
 
   const workoutCardStyles = {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#0E8388', // Use the secondary card background color here
     padding: '10px',
     marginBottom: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -29,10 +30,8 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     marginBottom: '-5px',
   };
 
-  
-
   return (
-    <div style={{ workoutListStyles}}>
+    <div style={workoutListStyles}>
       <h2>Workout List</h2>
       {workouts.map((workout, index) => (
         <div
@@ -63,4 +62,5 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
 };
 
 export default WorkoutList;
+
 

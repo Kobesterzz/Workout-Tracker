@@ -26,50 +26,74 @@ const WorkoutForm = ({ addWorkout }) => {
     marginBottom:'100px',
   }
 
+  const label = {
+    display:'flex',
+    flexDirection: 'column',
+    marginBottom:'20px',
+    fontFamily:'SF pro',
+  }
+
+  const input = {
+    color:'white',
+    background:'transparent',
+    borderColor:'white',
+  }
+
+  const button = {
+    color:'white',
+    background:'grey',
+    borderColor:'white',
+  }
+
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
       <h2>Add Workout</h2>
-      <label>
+      <label style={label}>
         Date:
         <input
+          style={input}
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
       </label>
-      <label>
+      <label style={label}>
         Exercise:
         <input
+          style={input}
           type="text"
           value={exercise}
           onChange={(e) => setExercise(e.target.value)}
         />
       </label>
-      <label>
+      <label style={label}>
         Sets:
         <input
+          style={input}
           type="number"
           value={sets}
           onChange={(e) => setSets(parseInt(e.target.value))}
         />
       </label>
-      <label>
+      <label style={label}>
         Reps:
         <input
+          style={input}
           type="number"
           value={reps}
           onChange={(e) => setReps(parseInt(e.target.value))}
         />
       </label>
-      <label>
+      <label style={label}>
         notes:
         <input
+          style={input}
           type="text"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         />
       </label>
-      <button type="submit">Add</button>
+      <button style={button} type="submit">Add</button>
     </form>
   );
 };

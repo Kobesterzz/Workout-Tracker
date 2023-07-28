@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const WorkoutList = ({ workouts, handleDateClick }) => {
+  const [activeDate, setActiveDate] = useState(null); // State to keep track of active date
+
   const workoutListStyles = {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'flex-start',
     color: '#2C3333', // Use the primary text color here
   };
@@ -13,6 +15,8 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     padding: '10px',
     marginBottom: '10px',
     cursor: 'pointer',
+    position: 'relative',
+    zIndex: 1,
     transition: 'transform 0.3s',
   };
 
@@ -21,13 +25,23 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     padding: '10px',
     marginBottom: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    transform: 'translateY(-10)',
+    position: 'absolute',
+    top: '40px', // Adjust the distance from the date card here
+    left: 0,
+    right: 0,
+    transform: 'scaleY(0)', // Hide the workout cards initially
+    transformOrigin: 'top', // Set the transform origin to top
     transition: 'transform 0.3s',
+    zIndex: 0,
   };
 
   const stackStyles = {
     transform: 'translateY(0)',
     marginBottom: '-5px',
+  };
+
+  const handleDateClickToggle = (date) => {
+    setActiveDate((prevActiveDate) => (prevActiveDate === date ? null : date));
   };
 
   return (
@@ -37,18 +51,23 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
         <div
           style={dateCardStyles}
           key={index}
-          onClick={() => handleDateClick(workout.date)}
+          onClick={() => handleDateClickToggle(workout.date)} // Use handleDateClickToggle
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(0px)';
+            e.currentTarget.style.transform = 'translateY(-10px)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <h3>Date: {workout.date}</h3>
-          <div style={stackStyles}>
+          <div
+            style={{
+              ...workoutCardStyles,
+              transform: activeDate === workout.date ? 'scaleY(1)' : 'scaleY(0)', // Toggle visibility based on activeDate
+            }}
+          >
             {workout.workouts.map((w, i) => (
-              <div style={workoutCardStyles} key={i}>
+              <div key={i}>
                 <h4>Exercise: {w.exercise}</h4>
                 <p>Sets: {w.sets}</p>
                 <p>Reps: {w.reps}</p>
@@ -63,5 +82,3 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
 };
 
 export default WorkoutList;
-
-

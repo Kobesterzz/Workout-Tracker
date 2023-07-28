@@ -24,6 +24,10 @@ const WorkoutForm = ({ addWorkout }) => {
 
   const formStyle = {
     marginBottom:'100px',
+    display:'flex',
+    justifyContent:'center',
+    flexDirection: 'column',
+    
   }
 
   const label = {

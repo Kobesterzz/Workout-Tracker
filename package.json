@@ -15,5 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "postcss-loader": "^7.3.3",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.63.6",
+    "scss": "^0.2.4"
   }
 }

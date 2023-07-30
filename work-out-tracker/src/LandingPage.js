@@ -23,7 +23,7 @@ const LandingPage = ({ onGetStarted }) => {
 
   return (
     <div style={landingStyles}>
-      <h1>Welcome to the Workout Tracker App</h1>
+      <h1>Welcome to the Workout Tracker </h1>
       <p>Keep track of your workouts with ease!</p>
       <button style={buttonStyles} onClick={onGetStarted}>
         Get Started

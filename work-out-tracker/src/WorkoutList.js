@@ -5,16 +5,16 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
 
   const workoutListStyles = {
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexWrap: 'wrap', // Display date cards in a row and wrap to next row if needed
+    justifyContent: 'center', // Center the content horizontally
     color: '#2C3333', // Use the primary text color here
   };
 
   const dateCardStyles = {
-    backgroundColor: '#2E4F4F', // Use the primary card background color here
+    backgroundColor: '#2E4F4F',
     padding: '10px',
     marginBottom: '10px',
-    marginRight: '10px', // Add a gap between date cards
+    marginRight: '10px', // Add spacing between date cards
     cursor: 'pointer',
     position: 'relative',
     zIndex: 1,
@@ -22,16 +22,16 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
   };
 
   const workoutCardStyles = {
-    backgroundColor: '#0E8388', // Use the secondary card background color here
+    backgroundColor: '#0E8388',
     padding: '10px',
     marginBottom: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     position: 'absolute',
-    top: '40px', // Adjust the distance from the date card here
+    top: '40px',
     left: 0,
     right: 0,
-    transform: 'scaleY(0)', // Hide the workout cards initially
-    transformOrigin: 'top', // Set the transform origin to top
+    transform: 'scaleY(0)',
+    transformOrigin: 'top',
     transition: 'transform 0.3s',
     zIndex: 0,
   };
@@ -47,7 +47,6 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
 
   return (
     <div style={workoutListStyles}>
-      <h2>Workout List</h2>
       {workouts.map((workout, index) => {
         const workoutCount = workout.workouts.length;
         const isActive = activeDate === workout.date;
@@ -55,7 +54,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
           <div
             style={dateCardStyles}
             key={index}
-            onClick={() => handleDateClickToggle(workout.date)} // Use handleDateClickToggle
+            onClick={() => handleDateClickToggle(workout.date)}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-10px)';
             }}
@@ -64,7 +63,6 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
             }}
           >
             <h3>Date: {workout.date}</h3>
-            {/* Add the circle with workout count */}
             {workoutCount > 0 && (
               <div
                 style={{
@@ -86,7 +84,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
             <div
               style={{
                 ...workoutCardStyles,
-                transform: isActive ? 'scaleY(1)' : 'scaleY(0)', // Toggle visibility based on activeDate
+                transform: isActive ? 'scaleY(1)' : 'scaleY(0)',
               }}
             >
               {workout.workouts.map((w, i) => (

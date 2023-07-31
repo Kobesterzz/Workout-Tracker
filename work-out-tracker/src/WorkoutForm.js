@@ -23,51 +23,47 @@ const WorkoutForm = ({ addWorkout }) => {
   };
 
   const formStyle = {
-    marginBottom:'100px',
-    display:'flex',
-    justifyContent:'center',
+    marginBottom: '100px',
+    display: 'flex',
     flexDirection: 'column',
-    
-  }
+    alignItems: 'center', // Center the form horizontally
+    color: 'white',
+  };
 
   const Title = {
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'space-evenly',
-  }  
-
-  const inputTitle = {
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'space-evenly',
-  }
+    fontSize: '24px',
+    fontWeight: 'bold',
+    margin: '20px 0', // Add some margin at the top and bottom of the title
+  };
 
   const label = {
-    display:'flex',
+    display: 'flex',
     flexDirection: 'column',
-    marginBottom:'20px',
-    fontFamily:'SF pro',
-  }
+    marginBottom: '20px',
+    fontFamily: 'SF pro',
+    textAlign: 'center', // Center the label text
+  };
 
   const input = {
-    color:'white',
-    background:'transparent',
-    borderColor:'white',
-  }
+    color: 'white',
+    background: 'transparent',
+    borderColor: 'white',
+    textAlign: 'center', // Center the input text
+    width: '500px', // Set a fixed width for the input box
+    margin: '0 auto', // Center the input horizontally
+  };
 
   const button = {
-    color:'white',
-    background:'grey',
-    borderColor:'white',
-  }
+    color: 'white',
+    background: 'grey',
+    borderColor: 'white',
+  };
 
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
       <h2 style={Title}>Add Workout</h2>
       <label style={label}>
-        <div style ={inputTitle}>
-          Date:
-        </div>
+        <div>Date:</div>
         <input
           style={input}
           type="date"
@@ -76,9 +72,7 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
-      <div style ={inputTitle}>
-        Exercise:
-      </div>
+        <div>Exercise:</div>
         <input
           style={input}
           type="text"
@@ -87,9 +81,7 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
-      <div style ={inputTitle}>
-        Sets:
-      </div>
+        <div>Sets:</div>
         <input
           style={input}
           type="number"
@@ -98,9 +90,7 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
-      <div style ={inputTitle}>
-        Reps:
-      </div>
+        <div>Reps:</div>
         <input
           style={input}
           type="number"
@@ -109,9 +99,7 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
-      <div style ={inputTitle}>
-        notes:
-      </div>
+        <div>Notes:</div>
         <input
           style={input}
           type="text"
@@ -119,7 +107,9 @@ const WorkoutForm = ({ addWorkout }) => {
           onChange={(e) => setNotes(e.target.value)}
         />
       </label>
-      <button style={button} type="submit">Add</button>
+      <button style={button} type="submit">
+        Add
+      </button>
     </form>
   );
 };

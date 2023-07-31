@@ -30,6 +30,18 @@ const WorkoutForm = ({ addWorkout }) => {
     
   }
 
+  const Title = {
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'space-evenly',
+  }  
+
+  const inputTitle = {
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'space-evenly',
+  }
+
   const label = {
     display:'flex',
     flexDirection: 'column',
@@ -51,9 +63,11 @@ const WorkoutForm = ({ addWorkout }) => {
 
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
-      <h2>Add Workout</h2>
+      <h2 style={Title}>Add Workout</h2>
       <label style={label}>
-        Date:
+        <div style ={inputTitle}>
+          Date:
+        </div>
         <input
           style={input}
           type="date"
@@ -62,7 +76,9 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
+      <div style ={inputTitle}>
         Exercise:
+      </div>
         <input
           style={input}
           type="text"
@@ -71,7 +87,9 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
+      <div style ={inputTitle}>
         Sets:
+      </div>
         <input
           style={input}
           type="number"
@@ -80,7 +98,9 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
+      <div style ={inputTitle}>
         Reps:
+      </div>
         <input
           style={input}
           type="number"
@@ -89,7 +109,9 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <label style={label}>
+      <div style ={inputTitle}>
         notes:
+      </div>
         <input
           style={input}
           type="text"

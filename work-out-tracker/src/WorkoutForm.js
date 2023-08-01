@@ -27,11 +27,11 @@ const WorkoutForm = ({ addWorkout }) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center', // Center the form horizontally
-    color: 'white',
+    color: '#1F1D36', // Primary color
   };
 
   const Title = {
-    marginTop:'40px',
+    marginTop: '40px',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '20px 0', // Add some margin at the top and bottom of the title
@@ -46,9 +46,9 @@ const WorkoutForm = ({ addWorkout }) => {
   };
 
   const input = {
-    color: 'white',
-    background: 'transparent',
-    borderColor: 'white',
+    color: '#1F1D36', // Primary color
+    background: '#E9A6A6', // Accent color
+    borderColor: '#864879', // Secondary color
     textAlign: 'center', // Center the input text
     width: '500px', // Set a fixed width for the input box
     margin: '0 auto', // Center the input horizontally
@@ -56,7 +56,7 @@ const WorkoutForm = ({ addWorkout }) => {
 
   const button = {
     color: 'white',
-    background: 'grey',
+    background: '#3F3351', // Primary color
     borderColor: 'white',
   };
 
@@ -116,3 +116,4 @@ const WorkoutForm = ({ addWorkout }) => {
 };
 
 export default WorkoutForm;
+

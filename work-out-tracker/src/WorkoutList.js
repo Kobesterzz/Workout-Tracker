@@ -5,13 +5,13 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
 
   const workoutListStyles = {
     display: 'flex',
-    flexWrap: 'wrap', // Display date cards in a row and wrap to next row if needed
+    flexWrap: 'wrap', // Display date cards in a row and wrap to the next row if needed
     justifyContent: 'center', // Center the content horizontally
-    color: '#2C3333', // Use the primary text color here
+    color: '#1F1D36', // Primary color
   };
 
   const dateCardStyles = {
-    backgroundColor: '#2E4F4F',
+    backgroundColor: '#1F1D36', // Primary color
     padding: '10px',
     marginBottom: '10px',
     marginRight: '10px', // Add spacing between date cards
@@ -19,10 +19,11 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     position: 'relative',
     zIndex: 1,
     transition: 'transform 0.3s',
+    color:'white',
   };
 
   const workoutCardStyles = {
-    backgroundColor: '#0E8388',
+    backgroundColor: '#3F3351', // Primary color
     padding: '10px',
     marginBottom: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -34,11 +35,6 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     transformOrigin: 'top',
     transition: 'transform 0.3s',
     zIndex: 0,
-  };
-
-  const stackStyles = {
-    transform: 'translateY(0)',
-    marginBottom: '-5px',
   };
 
   const handleDateClickToggle = (date) => {
@@ -54,7 +50,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
           <div
             style={dateCardStyles}
             key={index}
-            onClick={() => handleDateClickToggle(workout.date)}
+            onClick={() => handleDateClickToggle(workout.date)} 
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-10px)';
             }}
@@ -69,8 +65,8 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
                   position: 'absolute',
                   top: '-5px',
                   right: '10px',
-                  backgroundColor: 'green',
-                  color: '#ffffff',
+                  backgroundColor: '#864879', // Secondary color
+                  color: '#E9A6A6', // Accent color
                   borderRadius: '35%',
                   padding: '4px',
                   fontSize: '12px',

@@ -34,9 +34,9 @@ const App = () => {
 
   const backgroundColor = {
     marginTop: -16,
-    backgroundColor: '#2E615A',
+    backgroundColor: 'E9A6A6',
     height: '100vh',
-    color: '#CBE4DE',
+    color: '864879',
   };
 
   return (

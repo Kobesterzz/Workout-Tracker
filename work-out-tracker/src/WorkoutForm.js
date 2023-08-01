@@ -31,6 +31,7 @@ const WorkoutForm = ({ addWorkout }) => {
   };
 
   const Title = {
+    marginTop:'40px',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '20px 0', // Add some margin at the top and bottom of the title

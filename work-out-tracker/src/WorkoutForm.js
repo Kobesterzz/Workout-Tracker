@@ -45,19 +45,23 @@ const WorkoutForm = ({ addWorkout }) => {
     textAlign: 'center', // Center the label text
   };
 
-  const input = {
-    color: '#1F1D36', // Primary color
-    background: '#E9A6A6', // Accent color
-    borderColor: '#864879', // Secondary color
-    textAlign: 'center', // Center the input text
-    width: '500px', // Set a fixed width for the input box
-    margin: '0 auto', // Center the input horizontally
-  };
+  
+const input = {
+  color: '#1F1D36', // Primary color
+  background: '#CBC3E3', // Accent color
+  borderColor: '#864879', // Secondary color
+  textAlign: 'center', // Center the input text
+  width: '500px', // Set a fixed width for the input box
+  margin: '0 auto', // Center the input horizontally
+  padding: '10px', // Add some padding to the input
+  borderRadius: '5px', // Add some border radius for a rounded look
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Add box-shadow for depth
+};
 
   const button = {
     color: 'white',
     background: '#3F3351', // Primary color
-    borderColor: 'white',
+    borderColor: 'transparent',
   };
 
   return (
@@ -109,7 +113,7 @@ const WorkoutForm = ({ addWorkout }) => {
         />
       </label>
       <button style={button} type="submit">
-        Add
+        Add Workout
       </button>
     </form>
   );

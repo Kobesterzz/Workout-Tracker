@@ -1,3 +1,4 @@
+// WorkoutList.js
 import React, { useState } from 'react';
 
 const WorkoutList = ({ workouts, handleDateClick }) => {

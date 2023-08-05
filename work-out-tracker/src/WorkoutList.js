@@ -1,5 +1,13 @@
-// WorkoutList.js
+
 import React, { useState } from 'react';
+
+const chunkArray = (arr, size) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+};
 
 const WorkoutList = ({ workouts, handleDateClick }) => {
   const [activeDate, setActiveDate] = useState(null); // State to keep track of active date
@@ -20,7 +28,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     position: 'relative',
     zIndex: 1,
     transition: 'transform 0.3s',
-    color:'white',
+    color: 'white',
   };
 
   const workoutCardStyles = {
@@ -42,60 +50,70 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     setActiveDate((prevActiveDate) => (prevActiveDate === date ? null : date));
   };
 
-  return (
-    <div style={workoutListStyles}>
-      {workouts.map((workout, index) => {
-        const workoutCount = workout.workouts.length;
-        const isActive = activeDate === workout.date;
-        return (
-          <div
-            style={dateCardStyles}
-            key={index}
-            onClick={() => handleDateClickToggle(workout.date)} 
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            <h3>Date: {workout.date}</h3>
-            {workoutCount > 0 && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-5px',
-                  right: '10px',
-                  backgroundColor: '#864879', // Secondary color
-                  color: '#E9A6A6', // Accent color
-                  borderRadius: '35%',
-                  padding: '4px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  zIndex: 2,
-                }}
-              >
-                {workoutCount}
-              </div>
-            )}
+  const renderDateCards = (dates) => {
+    return dates.map((workout, index) => {
+      const workoutCount = workout.workouts.length;
+      const isActive = activeDate === workout.date;
+      return (
+        <div
+          style={dateCardStyles}
+          key={index}
+          onClick={() => handleDateClickToggle(workout.date)}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-10px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <h3>Date: {workout.date}</h3>
+          {workoutCount > 0 && (
             <div
               style={{
-                ...workoutCardStyles,
-                transform: isActive ? 'scaleY(1)' : 'scaleY(0)',
+                position: 'absolute',
+                top: '-5px',
+                right: '10px',
+                backgroundColor: '#864879', // Secondary color
+                color: '#E9A6A6', // Accent color
+                borderRadius: '35%',
+                padding: '4px',
+                fontSize: '12px',
+                fontWeight: 'bold',
+                zIndex: 2,
               }}
             >
-              {workout.workouts.map((w, i) => (
-                <div key={i}>
-                  <h4>Exercise: {w.exercise}</h4>
-                  <p>Sets: {w.sets}</p>
-                  <p>Reps: {w.reps}</p>
-                  <p>Notes: {w.notes}</p>
-                </div>
-              ))}
+              {workoutCount}
             </div>
+          )}
+          <div
+            style={{
+              ...workoutCardStyles,
+              transform: isActive ? 'scaleY(1)' : 'scaleY(0)',
+            }}
+          >
+            {workout.workouts.map((w, i) => (
+              <div key={i}>
+                <h4>Exercise: {w.exercise}</h4>
+                <p>Sets: {w.sets}</p>
+                <p>Reps: {w.reps}</p>
+                <p>Notes: {w.notes}</p>
+              </div>
+            ))}
           </div>
-        );
-      })}
+        </div>
+      );
+    });
+  };
+
+  const chunkedWorkouts = chunkArray(workouts, 7);
+
+  return (
+    <div>
+      {chunkedWorkouts.map((chunk, index) => (
+        <div key={index} style={workoutListStyles}>
+          {renderDateCards(chunk)}
+        </div>
+      ))}
     </div>
   );
 };

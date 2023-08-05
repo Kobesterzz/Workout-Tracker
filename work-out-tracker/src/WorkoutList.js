@@ -1,4 +1,4 @@
-
+// WorkoutList.js
 import React, { useState } from 'react';
 
 const chunkArray = (arr, size) => {
@@ -50,13 +50,17 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     setActiveDate((prevActiveDate) => (prevActiveDate === date ? null : date));
   };
 
-  const renderDateCards = (dates) => {
+  const renderDateCards = (dates, isExpanded) => {
     return dates.map((workout, index) => {
       const workoutCount = workout.workouts.length;
       const isActive = activeDate === workout.date;
+      const zIndex = isExpanded && isActive ? 2 : 1; // Set higher zIndex for the expanded date card
       return (
         <div
-          style={dateCardStyles}
+          style={{
+            ...dateCardStyles,
+            zIndex,
+          }}
           key={index}
           onClick={() => handleDateClickToggle(workout.date)}
           onMouseEnter={(e) => {
@@ -111,7 +115,7 @@ const WorkoutList = ({ workouts, handleDateClick }) => {
     <div>
       {chunkedWorkouts.map((chunk, index) => (
         <div key={index} style={workoutListStyles}>
-          {renderDateCards(chunk)}
+          {renderDateCards(chunk, index === 0 && activeDate !== null)}
         </div>
       ))}
     </div>

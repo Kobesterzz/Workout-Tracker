@@ -22,6 +22,39 @@ const WorkoutForm = ({ addWorkout }) => {
     setNotes('');
   };
 
+  const exerciseOptions = {
+    PushUp: 'Push-up',
+    PullUp: 'Pull-up',
+    Squat: 'Squat',
+    Deadlift: 'Deadlift',
+    BenchPress: 'Bench Press',
+    Lunges: 'Lunges',
+    Plank: 'Plank',
+    Rowing: 'Rowing',
+    LegPress: 'Leg Press',
+    BicepCurls: 'Bicep Curls',
+    TricepDips: 'Tricep Dips',
+    ShoulderPress: 'Shoulder Press',
+    RussianTwist: 'Russian Twist',
+    SitUps: 'Sit-ups',
+    JumpRope: 'Jump Rope',
+    Burpees: 'Burpees',
+    MountainClimbers: 'Mountain Climbers',
+    WeightedSquats: 'Weighted Squats',
+    Deadlifts: 'Deadlifts',
+    BarbellBenchPress: 'Barbell Bench Press',
+    DumbbellRows: 'Dumbbell Rows',
+    LegExtensions: 'Leg Extensions',
+    PlyoPushUps: 'Plyometric Push-ups',
+    BoxJumps: 'Box Jumps',
+    SquatJumps: 'Squat Jumps',
+    LateralBounds: 'Lateral Bounds',
+    TuckJumps: 'Tuck Jumps',
+    DepthJumps: 'Depth Jumps',
+    BroadJumps: 'Broad Jumps',
+  };
+  
+
   const formStyle = {
     marginBottom: '100px',
     display: 'flex',
@@ -83,7 +116,13 @@ const input = {
           type="text"
           value={exercise}
           onChange={(e) => setExercise(e.target.value)}
+          list = "exerciseOptions" 
         />
+        <datalist id="exerciseOptions">
+          {Object.keys(exerciseOptions).map((key) => (
+            <option key={key} value={exerciseOptions[key]} />
+          ))}
+        </datalist>
       </label>
       <label style={label}>
         <div>Sets:</div>
